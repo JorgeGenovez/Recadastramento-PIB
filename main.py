@@ -71,7 +71,6 @@ def verificar_acesso():
     
     return jsonify({"status": "error"})
 
-
 @app.route('/salvar_membro', methods=['POST'])
 @token_required
 def salvar_membro():
@@ -91,7 +90,7 @@ def salvar_membro():
     confirmando(request.form, link, user_data['nome'])
 
     return jsonify({"status": "success"})
-#-------------------------------------------------
+    
 @app.route('/salvar_membroNovo', methods=['POST'])
 @token_required
 def salvar_membroNovo():
@@ -111,7 +110,7 @@ def salvar_membroNovo():
     confirmandoNovo(request.form, link, user_data['nome'])
 
     return jsonify({"status": "success"})
-#-------------------------------------------------
+
 @app.route('/consultar_cep', methods=['POST'])
 @token_required
 def consultar_cep():
@@ -127,8 +126,6 @@ def buscar_por_membro():
     dados = dados.where(pd.notnull(dados), None)
     return jsonify(dados.to_dict()) 
 
-
-
 def verificar_token(token):
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
@@ -137,7 +134,6 @@ def verificar_token(token):
         return None
     except jwt.InvalidTokenError:
         return None
-
 
 @socketio.on('connect')
 def handle_connect():
