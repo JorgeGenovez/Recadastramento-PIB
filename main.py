@@ -17,10 +17,10 @@ from subirgoogleNovo import confirmandoNovo
 app = Flask(__name__)
 socketio = SocketIO(app, cors_allowed_origins=["http://127.0.0.1:5500"])
 CORS(app)
-#------------------------------------------------
+
 with open('secret_key.json') as json_file:
     SECRET_KEY = json.load(json_file)['SECRET_KEY']
-#-------------------------------------------------
+
 usuarios = [
     {"nome": "admin", "senha": "1234"},
 ]
