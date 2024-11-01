@@ -46,7 +46,7 @@ def token_required(f):
             return jsonify({'message': 'Token de autorização é necessário!'}), 401
 
         try:
-            # Remove o prefixo 'Bearer ' se houver
+            # Remove o prefixo 'Bearer '
             token = token.replace("Bearer ", "")
             # Decodifica e valida o token
             dados = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
